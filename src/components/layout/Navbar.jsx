@@ -6,10 +6,10 @@ export default function Navbar() {
   
   return (
     <nav className="bg-slate-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <span className="text-xl font-bold">PowerFuel</span>
+            <span className="text-xl font-bold">JustTrain</span>
             
             {/* Desktop Navigation */}
             <div className="hidden md:flex ml-10 space-x-8">
