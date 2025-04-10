@@ -3,36 +3,33 @@
 @tailwind utilities;
 
 
-.btn-grad-blue {background-image: linear-gradient(to right, #abbaab 0%, #ffffff  51%, #abbaab  100%)}
+.btn-grad-blue {background-image: linear-gradient(to right, #2c3e50 0%, #3498db  51%, #2c3e50  100%)}
 .btn-grad-blue {
    text-align: center;
    text-transform: uppercase;
    transition: 0.5s;
    background-size: 200% auto;            
    box-shadow: 0 0 20px #eee;
-   border-radius: 10px;
  }
 
  .btn-grad-blue:hover {
-   background-position: right center; /* change the direction of the change here */
+   background-position: right center; 
    text-decoration: none;
+}
+
+
+.btn-grad-black {background-image: linear-gradient(to right, #232526 0%, #414345  51%, #232526  100%)}
+.btn-grad-black {
+   text-align: center;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;            
+   box-shadow: 0 0 20px #eee;
+   display: block;
  }
 
- 
- .btn-grad-black {background-image: linear-gradient(to right, #000000 0%, #434343  51%, #000000  100%)}
- .btn-grad-black {
-    text-align: center;
-    text-transform: uppercase;
-    transition: 0.5s;
-    background-size: 200% auto;
-    color: white;            
-    box-shadow: 0 0 20px #eee;
-    border-radius: 10px;
-  }
-
-  .btn-grad-black:hover {
-    background-position: right center; /* change the direction of the change here */
-    color: #fff;
-    text-decoration: none;
-  }
- 
+ .btn-grad-black:hover {
+   background-position: right center; 
+   color: #fff;
+   text-decoration: none;
+ }
