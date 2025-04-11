@@ -37,7 +37,7 @@ export const products = [
       description: "20 servings, Berry Blast",
       price: 39.99,
       oldPrice: 44.99,
-      image: "/api/placeholder/300/300",
+      image: "../../Assets/img/PreWorkout.png",
       sale: true,
       reviewCount: 106,
       rating: 5
