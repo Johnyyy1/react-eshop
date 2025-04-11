@@ -3,6 +3,14 @@
 @tailwind utilities;
 
 
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  scrollbar-width: none; /* Firefox */
+}
+
 .btn-grad-blue {background-image: linear-gradient(to right, #2c3e50 0%, #3498db  51%, #2c3e50  100%)}
 .btn-grad-blue {
    text-align: center;
@@ -21,11 +29,11 @@
 .btn-grad-black {background-image: linear-gradient(to right, #232526 0%, #414345  51%, #232526  100%)}
 .btn-grad-black {
    text-align: center;
+   text-transform: uppercase;
    transition: 0.5s;
    background-size: 200% auto;
    color: white;            
    box-shadow: 0 0 20px #eee;
-   display: block;
  }
 
  .btn-grad-black:hover {

@@ -1,14 +1,18 @@
 export const testimonials = [
-    {
-      name: "Alex Johnson",
-      quote: "The quality of protein supplements from PowerFuel has made a significant difference in my recovery time after workouts."
-    },
-    {
-      name: "Sarah Williams",
-      quote: "I've been using their equipment for my home gym setup, and I'm impressed by the durability and professional quality."
-    },
-    {
-      name: "Mike Thompson",
-      quote: "Fast shipping, great customer service, and premium products. PowerFuel has become my go-to for all my fitness needs."
-    }
-  ];
+  {
+    name: "Emily Davis",
+    quote: "Just Lift’s workout supplements have boosted my energy levels during training, and I’ve seen a noticeable improvement in my performance."
+  },
+  {
+    name: "James Carter",
+    quote: "I switched to Just Lift's protein powder, and I’ve noticed quicker muscle recovery and better results in the gym."
+  },
+  {
+    name: "Sophia Martinez",
+    quote: "The quality of Just Lift's gear is unmatched. My resistance bands and dumbbells are holding up after months of use, and I couldn't be happier."
+  },
+  {
+    name: "Daniel Lee",
+    quote: "Just Lift offers top-tier fitness products that really help me take my workouts to the next level. Highly recommend!"
+  },
+];
