@@ -37,7 +37,7 @@ export default function Testimonials() {
           
           <a 
             href="#" 
-            className="group mt-4 md:mt-0 inline-flex items-center px-5 py-2 border border-white/10 rounded-full text-gray-300 hover:text-white hover:bg-white/5 transition-all duration-300"
+            className="group mt-4 md:mt-0 inline-flex items-center px-5 py-2 border border-white/10 btn-grad-darkblue  rounded-full text-gray-300 hover:text-white hover:bg-white/5 transition-all duration-300"
           >
             View All Reviews
             <span className="ml-2 transform transition-transform group-hover:translate-x-1">

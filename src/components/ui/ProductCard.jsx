@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Star, ShoppingCart, Heart } from 'lucide-react';
 
-
 function ProductCard({ product }) {
   const [isHovered, setIsHovered] = useState(false);
   

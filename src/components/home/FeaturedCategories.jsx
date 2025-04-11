@@ -118,7 +118,7 @@ export default function FeaturedCategories() {
         <div className="mt-16 text-center">
           <a 
             href="#" 
-            className="inline-flex items-center px-6 py-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-gray-300 hover:text-white transition-all duration-300 group"
+            className="inline-flex items-center px-6 py-3 rounded-full bg-white/5 btn-grad-darkblue hover:bg-white/10 border border-white/10 text-gray-300 hover:text-white transition-all duration-300 group"
           >
             View All Categories
             <span className="ml-2 group-hover:translate-x-1 transition-transform duration-300">

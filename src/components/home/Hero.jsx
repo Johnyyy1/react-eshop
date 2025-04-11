@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ChevronRight, ShoppingBag, Dumbbell } from 'lucide-react';
-import "../../../img/NewRelease.png"
+// If using Vite, import from assets folder
+import Logo from "../../assets/img/NewRelease2Better.png";
 
 export default function Hero() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -107,7 +108,7 @@ export default function Hero() {
                 <div className="absolute inset-0 rounded-full overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-tr from-blue-900/80 to-transparent opacity-80"></div>
                   <img 
-                    src="../../../img/NewRelease.png"
+                    src={Logo}
                     alt="Premium protein product"
                     className="h-full w-full object-cover rounded-full p-2"
                   />

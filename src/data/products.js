@@ -5,9 +5,10 @@ export const products = [
       description: "30 servings, Chocolate",
       price: 49.99,
       oldPrice: 59.99,
-      image: "/api/placeholder/300/300",
+      image: "../../Assets/img/NewRelease2Better.png",
       sale: true,
-      reviewCount: 120
+      reviewCount: 120,
+      rating: 4.5
     },
     {
       id: 2,
@@ -15,18 +16,20 @@ export const products = [
       description: "60 servings, Unflavored",
       price: 29.99,
       oldPrice: 34.99,
-      image: "/api/placeholder/300/300",
+      image: "../../Assets/img/Creatine.png",
       sale: true,
-      reviewCount: 85
+      reviewCount: 85,
+      rating: 5
     },
     {
       id: 3,
       name: "Adjustable Dumbbell Set",
       description: "5-25kg, Professional Grade",
       price: 199.99,
-      image: "/api/placeholder/300/300",
+      image: "../../Assets/img/AdjustableDBSet.png",
       sale: false,
-      reviewCount: 64
+      reviewCount: 64,
+      rating: 4.5
     },
     {
       id: 4,
@@ -36,6 +39,7 @@ export const products = [
       oldPrice: 44.99,
       image: "/api/placeholder/300/300",
       sale: true,
-      reviewCount: 106
+      reviewCount: 106,
+      rating: 5
     }
   ];
