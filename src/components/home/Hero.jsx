@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ChevronRight, ShoppingBag, Dumbbell } from 'lucide-react';
 // If using Vite, import from assets folder
-import Logo from "../../assets/img/NewRelease2Better.png";
+import Logo from "../../assets/img/PreWorkout.png";
 
 export default function Hero() {
   const [isLoaded, setIsLoaded] = useState(false);

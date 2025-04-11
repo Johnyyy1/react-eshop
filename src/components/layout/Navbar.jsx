@@ -32,7 +32,7 @@ export default function Navbar() {
             <div className="flex items-center space-x-2">
               <Zap className="text-blue-500" size={22} />
               <span className="font-bold text-xl tracking-wide text-white">
-                JUST<span className="font-light">TRAIN</span>
+                JUST<span className="font-light">LIFT</span>
               </span>
             </div>
           </div>

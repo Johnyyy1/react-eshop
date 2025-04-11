@@ -42,6 +42,21 @@ body {
    text-decoration: none;
  }
 
+ .btn-grad-black-lowcase {background-image: linear-gradient(to right, #232526 0%, #414345  51%, #232526  100%)}
+.btn-grad-black-lowcase {
+   text-align: center;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;            
+   box-shadow: 0 0 20px #eee;
+ }
+
+ .btn-grad-black-lowcase:hover {
+   background-position: right center; 
+   color: #fff;
+   text-decoration: none;
+ }
+
  
  .btn-grad-darkblue {background-image: linear-gradient(to right, #000428 0%, #004e92  51%, #000428  100%)}
  .btn-grad-darkblue {
