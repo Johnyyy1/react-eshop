@@ -1,5 +1,10 @@
 import { useState } from 'react';
 import { ArrowRight, Plus } from 'lucide-react';
+import NewRelease2Better from '../../Assets/img/NewRelease2Better.png';
+import GymEquipment from '../../Assets/img/GymEquipment.png';
+import Accessories from '../../Assets/img/Accessories.png';
+
+
 
 export default function FeaturedCategories() {
   const [hoveredCategory, setHoveredCategory] = useState(null);
@@ -8,21 +13,21 @@ export default function FeaturedCategories() {
     {
       title: "Protein Supplements",
       description: "Whey, plant-based, and specialty protein powders to support your goals.",
-      image: "/api/placeholder/600/400",
+      image: NewRelease2Better,
       link: "#",
       icon: "⚡"
     },
     {
       title: "Gym Equipment",
       description: "Professional-grade weights, machines, and accessories for home or gym use.",
-      image: "/api/placeholder/600/400",
+      image: GymEquipment,
       link: "#",
       icon: "🏋️"
     },
     {
       title: "Fitness Accessories",
       description: "Essential workout gear, supplements, and accessories to enhance your training.",
-      image: "/api/placeholder/600/400",
+      image: Accessories,
       link: "#",
       icon: "⚙️"
     }
@@ -66,7 +71,7 @@ export default function FeaturedCategories() {
                     src={category.image} 
                     alt={category.title} 
                     className={`w-full h-full object-cover transition-transform duration-700 ${
-                      hoveredCategory === index ? 'scale-110' : 'scale-100'
+                      hoveredCategory === index ? 'scale-105' : 'scale-100'
                     }`}
                   />
                   

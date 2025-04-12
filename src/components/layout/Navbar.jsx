@@ -32,7 +32,7 @@ export default function Navbar() {
             <div className="flex items-center space-x-2">
               <Zap className="text-blue-500" size={22} />
               <span className="font-bold text-xl tracking-wide text-white">
-                JUST<span className="font-light">TRAIN</span>
+                JUST<span className="font-light">LIFT</span>
               </span>
             </div>
           </div>
@@ -43,7 +43,7 @@ export default function Navbar() {
               <button
                 key={item}
                 onClick={() => setActiveItem(item)}
-                className="relative px-4 py-2 group border-none"
+                className="relative px-4 py-2 rounded-full group border-none"
               >
                 <span className={`relative z-10 transition-colors duration-300 ${
                   activeItem === item ? 'text-white' : 'text-gray-400 group-hover:text-white'
