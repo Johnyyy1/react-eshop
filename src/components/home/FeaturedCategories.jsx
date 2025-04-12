@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { ArrowRight, Plus } from 'lucide-react';
 import NewRelease2Better from '../../Assets/img/NewRelease2Better.png';
 import GymEquipment from '../../Assets/img/GymEquipment.png';
+import Accessories from '../../Assets/img/Accessories.png';
+
 
 
 export default function FeaturedCategories() {
@@ -25,7 +27,7 @@ export default function FeaturedCategories() {
     {
       title: "Fitness Accessories",
       description: "Essential workout gear, supplements, and accessories to enhance your training.",
-      image: "/api/placeholder/600/400",
+      image: Accessories,
       link: "#",
       icon: "⚙️"
     }

@@ -43,7 +43,7 @@ export default function Navbar() {
               <button
                 key={item}
                 onClick={() => setActiveItem(item)}
-                className="relative px-4 py-2 group border-none"
+                className="relative px-4 py-2 rounded-full group border-none"
               >
                 <span className={`relative z-10 transition-colors duration-300 ${
                   activeItem === item ? 'text-white' : 'text-gray-400 group-hover:text-white'
