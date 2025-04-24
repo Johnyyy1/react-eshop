@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { ShoppingCart, Menu, X, Zap } from 'lucide-react';
+import { useCart } from '../../context/CartContext';
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeItem, setActiveItem] = useState('Home');
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+  const { cartCount, isCartAnimating } = useCart();
   
   useEffect(() => {
     const handleScroll = () => {
@@ -14,123 +17,162 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = ['Home', 'Protein', 'Equipment', 'Apparel', 'About'];
+  const navItems = [
+    { name: 'Home', path: '/' },
+    { name: 'Categories', path: '/categories' },
+    { name: 'Protein', path: '/protein' },
+    { name: 'Equipment', path: '/equipment' },
+    { name: 'Apparel', path: '/apparel' },
+    { name: 'About', path: '/about' },
+    { name: 'Favorites', path: '/favorites' }
+  ];
+
+  const isActive = (path) => {
+    if (path === '/') {
+      return location.pathname === '/';
+    }
+    return location.pathname.startsWith(path);
+  };
 
   return (
     <nav className={`fixed w-full z-50 transition-all duration-500 ${
-      scrolled 
-        ? 'bg-white/10 backdrop-blur-lg shadow-lg' 
-        : 'bg-transparent'
+      scrolled ? 'glass' : 'bg-transparent'
     }`}>
-      {/* Highlight line with animated gradient */}
-      <div className="h-0.5 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500"></div>
+      {/* Animated accent line */}
+      <div className="relative h-0.5 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 animate-gradient" 
+             style={{ backgroundSize: '200% 100%' }}></div>
+      </div>
       
       <div className="mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo area */}
-          <div className="flex items-center">
-            <div className="flex items-center space-x-2">
-              <Zap className="text-blue-500" size={22} />
-              <span className="font-bold text-xl tracking-wide text-white">
-                JUST<span className="font-light">LIFT</span>
-              </span>
+          <Link to="/" className="flex items-center space-x-2 group">
+            <div className="w-10 h-10 rounded-xl glass-hover flex items-center justify-center">
+              <Zap className="text-gradient" size={22} />
             </div>
-          </div>
+            <span className="font-bold text-xl tracking-wide text-white">
+              JUST<span className="font-light text-gradient">LIFT</span>
+            </span>
+          </Link>
           
           {/* Desktop navigation */}
           <div className="hidden md:flex items-center space-x-1">
             {navItems.map((item) => (
-              <button
-                key={item}
-                onClick={() => setActiveItem(item)}
-                className="relative px-4 py-2 rounded-full group border-none"
+              <Link
+                key={item.name}
+                to={item.path}
+                className="relative px-4 py-2 rounded-full group"
               >
                 <span className={`relative z-10 transition-colors duration-300 ${
-                  activeItem === item ? 'text-white' : 'text-gray-400 group-hover:text-white'
+                  isActive(item.path) ? 'text-white' : 'text-gray-400 group-hover:text-white'
                 }`}>
-                  {item}
+                  {item.name}
                 </span>
                 
-                {/* Animated background indicator */}
-                <span 
-                  className={`absolute inset-0 rounded-full transition-all duration-300 transform ${
-                    activeItem === item 
-                      ? 'bg-blue-500/20 scale-100 opacity-100' 
-                      : 'bg-transparent scale-90 opacity-0 group-hover:scale-100 group-hover:opacity-50 group-hover:bg-white/5'
-                  }`}
-                ></span>
+                {/* Animated background */}
+                <span className={`absolute inset-0 rounded-full transition-all duration-300 ${
+                  isActive(item.path)
+                    ? 'glass opacity-100 scale-100'
+                    : 'opacity-0 scale-90 group-hover:opacity-50 group-hover:scale-100'
+                }`}></span>
                 
-                {/* Bottom indicator line */}
-                <span 
-                  className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-blue-500 transition-all duration-300 ${
-                    activeItem === item ? 'w-8' : 'w-0 group-hover:w-4'
-                  }`}
-                ></span>
-              </button>
+                {/* Glow effect */}
+                {isActive(item.path) && (
+                  <span className="absolute inset-0 rounded-full glow-effect"></span>
+                )}
+              </Link>
             ))}
           </div>
           
           {/* Cart button */}
-          <div className="flex items-center">
-            <button className="hidden md:flex items-center space-x-2 px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300 group">
-              <ShoppingCart size={18} className="text-blue-400 group-hover:text-blue-300 transition-colors" />
-              <span className="text-gray-300 group-hover:text-white transition-colors">Cart (0)</span>
-            </button>
-            
-            {/* Mobile menu button */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300"
-            >
-              {mobileMenuOpen ? (
-                <X size={20} className="text-white" />
-              ) : (
-                <Menu size={20} className="text-gray-300" />
-              )}
-            </button>
-          </div>
+          <Link 
+            to="/cart" 
+            className={`hidden md:flex items-center space-x-2 px-4 py-2 rounded-full glass-hover group relative ${
+              isCartAnimating ? 'cart-pulse' : ''
+            }`}
+          >
+            <ShoppingCart size={18} className="text-gradient" />
+            <span className="text-gray-300 group-hover:text-white transition-colors">
+              Cart ({cartCount})
+            </span>
+            {cartCount > 0 && (
+              <span className={`absolute -top-1 -right-1 w-5 h-5 bg-gradient-radial from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-xs text-white ${
+                isCartAnimating ? 'animate-ping' : 'animate-pulse'
+              }`}>
+                {cartCount}
+              </span>
+            )}
+          </Link>
+          
+          {/* Mobile menu button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden w-10 h-10 glass-hover rounded-xl flex items-center justify-center"
+          >
+            {mobileMenuOpen ? (
+              <X size={20} className="text-gradient" />
+            ) : (
+              <Menu size={20} className="text-gradient" />
+            )}
+          </button>
         </div>
       </div>
       
-      {/* Mobile menu with clean animation */}
+      {/* Mobile menu */}
       <div 
-        className={`md:hidden fixed inset-x-0 transition-all duration-500 ease-in-out bg-gradient-to-b from-black to-gray-900/95 backdrop-blur-md ${
+        className={`md:hidden fixed inset-x-0 transition-all duration-500 ease-in-out glass backdrop-blur-md ${
           mobileMenuOpen 
-            ? 'top-16 opacity-100' 
-            : '-top-full opacity-0'
+            ? 'translate-y-0 opacity-100 shadow-xl shadow-black/10' 
+            : '-translate-y-full opacity-0'
         }`}
       >
         <div className="p-6 space-y-3">
           {navItems.map((item, i) => (
-            <button
-              key={item}
-              onClick={() => {
-                setActiveItem(item);
-                setMobileMenuOpen(false);
-              }}
-              className={`block w-full text-left px-3 py-3 rounded-lg transition-all duration-300 ${
-                activeItem === item 
-                  ? 'text-white bg-blue-500/20 border-l-2 border-blue-500' 
-                  : 'text-gray-400 hover:bg-white/5 border-l-2 border-transparent'
+            <Link
+              key={item.name}
+              to={item.path}
+              onClick={() => setMobileMenuOpen(false)}
+              className={`block w-full text-left px-4 py-3 rounded-lg transition-all duration-500 ${
+                isActive(item.path)
+                  ? 'glass text-gradient font-medium translate-x-2' 
+                  : 'text-gray-400 hover:text-white hover:glass-hover hover:translate-x-2'
               }`}
-              style={{ 
-                transitionDelay: `${i * 50}ms`,
-                transform: mobileMenuOpen ? 'translateX(0)' : 'translateX(-10px)',
+              style={{
+                transitionDelay: `${i * 75}ms`,
+                transform: mobileMenuOpen ? 'translateX(0)' : 'translateX(-2rem)',
                 opacity: mobileMenuOpen ? 1 : 0
               }}
             >
-              {item}
-            </button>
+              {item.name}
+            </Link>
           ))}
           
           <div className="pt-4 mt-2">
-            <button className="flex w-full items-center space-x-2 px-4 py-3 rounded-lg bg-blue-500/10 hover:bg-blue-500/20 transition-all duration-300">
-              <ShoppingCart size={18} className="text-blue-400" />
-              <span className="text-gray-300">Cart (0)</span>
-            </button>
+            <Link 
+              to="/cart" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex w-full items-center space-x-2 px-4 py-3 rounded-lg glass-hover group"
+              style={{
+                transitionDelay: `${navItems.length * 75}ms`,
+                transform: mobileMenuOpen ? 'translateX(0)' : 'translateX(-2rem)',
+                opacity: mobileMenuOpen ? 1 : 0
+              }}
+            >
+              <ShoppingCart size={18} className="text-gradient group-hover:scale-110 transition-transform" />
+              <span className="text-gray-300">Cart ({cartCount})</span>
+            </Link>
           </div>
         </div>
       </div>
+
+      {/* Background blur effect for mobile menu */}
+      <div 
+        className={`fixed inset-0 bg-black/20 backdrop-blur-sm md:hidden transition-opacity duration-500 ${
+          mobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        }`}
+        onClick={() => setMobileMenuOpen(false)}
+      />
     </nav>
   );
 }

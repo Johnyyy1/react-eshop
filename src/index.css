@@ -1,68 +1,44 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+html {
+  scroll-behavior: smooth;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+@layer components {
+  .glass {
+    @apply bg-white/5 backdrop-blur-sm border border-white/10 transition-all duration-300;
   }
-  a:hover {
-    color: #747bff;
+
+  .glass-hover {
+    @apply glass hover:bg-white/10 hover:border-white/20 transition-all duration-300;
   }
-  button {
-    background-color: #f9f9f9;
+
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/10 hover:border-primary-500/20;
+  }
+
+  .btn-modern {
+    @apply bg-gradient-to-r from-primary-500 to-primary-600 text-white 
+           hover:from-primary-600 hover:to-primary-700 transition-all duration-300
+           focus:ring-2 focus:ring-primary-500/20 disabled:opacity-50
+           active:scale-[0.98];
+  }
+
+  .btn-grad-blue {
+    @apply bg-gradient-to-r from-blue-500 to-primary-500 text-white
+           hover:from-blue-600 hover:to-primary-600 transition-all duration-300;
+  }
+
+  .nav-link {
+    @apply relative px-4 py-2 text-gray-400 hover:text-white transition-colors duration-300
+           before:absolute before:left-0 before:bottom-0 before:h-0.5 before:w-0
+           before:bg-gradient-to-r before:from-primary-500 before:to-purple-500
+           before:transition-all before:duration-300 hover:before:w-full;
+  }
+
+  .nav-link-active {
+    @apply text-white before:w-full;
   }
 }
